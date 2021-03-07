@@ -42,12 +42,15 @@
       <el-form-item>
         <el-button type="primary" @click="onSubmit">Create</el-button>
         <el-button @click="onCancel">Cancel</el-button>
+        <el-button @click="resetRouterTest">test</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
+import { resetRouter } from '@/router'
+
 export default {
   data() {
     return {
@@ -72,6 +75,10 @@ export default {
         message: 'cancel!',
         type: 'warning'
       })
+    },
+    // 重置路由
+    resetRouterTest() {
+      this.$router
     }
   }
 }
