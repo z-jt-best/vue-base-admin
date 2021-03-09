@@ -5,6 +5,8 @@ const path = require('path')
 
 const mockDir = path.join(process.cwd(), 'mock')
 
+
+// 
 function registerRoutes(app) {
   let mockLastIndex
   const { default: mocks } = require('./index.js')
@@ -19,6 +21,7 @@ function registerRoutes(app) {
   }
 }
 
+// 注销所有mock路径下的require
 function unregisterRoutes() {
   Object.keys(require.cache).forEach(i => {
     if (i.includes(mockDir)) {
@@ -28,6 +31,7 @@ function unregisterRoutes() {
 }
 
 module.exports = app => {
+
   // es6 polyfill
   require('@babel/register')
 
@@ -41,6 +45,8 @@ module.exports = app => {
   const mockRoutes = registerRoutes(app)
   var mockRoutesLength = mockRoutes.mockRoutesLength
   var mockStartIndex = mockRoutes.mockStartIndex
+  console.log('mockRoutes')
+  console.log(mockRoutes)
 
   // watch files, hot reload mock server
   chokidar.watch(mockDir, {

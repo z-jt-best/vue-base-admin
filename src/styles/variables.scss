@@ -1,4 +1,4 @@
-// sidebar
+// sidebar相关css属性
 $menuText:#bfcbd9;
 $menuActiveText:#409EFF;
 $subMenuActiveText:#f4f4f5; //https://github.com/ElemeFE/element/issues/12951
@@ -9,6 +9,7 @@ $menuHover:#263445;
 $subMenuBg:#1f2d3d;
 $subMenuHover:#001528;
 
+// sidebar的宽度
 $sideBarWidth: 210px;
 
 // the :export directive is the magic sauce for webpack
