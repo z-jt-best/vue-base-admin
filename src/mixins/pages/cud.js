@@ -47,6 +47,8 @@ export default {
             handler(newV) {
                 if (newV === false) {
                     this.$refs.myForm && this.$refs.myForm.resetFields()
+                    // 重置表格内容为空对象
+                    this.dialogForm.formData = Object.assign({})
                 }
             }
         },
@@ -86,6 +88,8 @@ export default {
          * 表单创建（添加功能）
          */
         handleCreate(objValue) {
+            console.log('objValue')
+            console.log(objValue)
             formFn.createFn.apply(this, [objValue])
         },
 

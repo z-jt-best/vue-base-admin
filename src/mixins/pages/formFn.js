@@ -123,16 +123,3 @@ export function mulDelFn(func) {
             this.$message.info('取消删除')
         })
 }
-
-function catchUrl(e, url, detail) {
-    console.group(`Error found in doPost(${url})`)
-    if (detail) console.info(`--${detail}--报错！`)
-    console.error(e)
-    console.groupEnd()
-}
-
-function catchFn(e, fn) {
-    console.group(`Error found in method (${fn.name})`)
-    console.error(e)
-    console.groupEnd()
-}

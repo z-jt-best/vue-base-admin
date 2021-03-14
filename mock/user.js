@@ -1,3 +1,13 @@
+/**
+ * 返回的数据结构如下
+ * {
+ *      code: 200  // 业务状态码，目前200表示成功
+ *      success: true/false // 表示请求是否成功/失败
+ *      data: []/{}     // 后台返回的数据集
+ *      message: ''     // 后台返回的信息(错误时会使用该字段进行提示)
+ * }
+ */
+
 const tokens = {
     admin: {
         token: 'admin-token'
@@ -23,7 +33,7 @@ const users = {
 }
 
 export default [
-    // user login
+    // 登录
     {
         url: '/vue-admin-template/user/login',
         type: 'post',
@@ -46,7 +56,7 @@ export default [
         }
     },
 
-    // get user info
+    // 获取用户信息
     {
         url: '/vue-admin-template/user/info.*',
         type: 'get',
@@ -69,7 +79,7 @@ export default [
         }
     },
 
-    // user logout
+    // 退出登录
     {
         url: '/vue-admin-template/user/logout',
         type: 'post',

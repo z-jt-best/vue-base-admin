@@ -1,5 +1,3 @@
-import Mock from 'mockjs'
-
 /**
  * 返回的数据结构如下
  * {
@@ -9,6 +7,8 @@ import Mock from 'mockjs'
  *      message: ''     // 后台返回的信息(错误时会使用该字段进行提示)
  * }
  */
+
+import Mock from 'mockjs'
 
 const data = Mock.mock({
     'items|30': [
@@ -23,7 +23,12 @@ const data = Mock.mock({
     ]
 })
 
+const tableId = Mock.mock({
+    id: '@id'
+})
+
 export default [
+    // 表格数据
     {
         url: '/vue-admin-template/table/list',
         type: 'get',
@@ -31,11 +36,50 @@ export default [
             const items = data.items
             return {
                 code: 200,
-                success: true, // 请求是否成功
+                success: true,
                 data: {
                     total: items.length,
                     resultList: items
                 },
+                message: ''
+            }
+        }
+    },
+
+    {
+        url: '/vue-admin-template/table/add',
+        type: 'post',
+        response: config => {
+            return {
+                code: 200,
+                success: true,
+                data: null,
+                message: ''
+            }
+        }
+    },
+
+    {
+        url: '/vue-admin-template/table/edit',
+        type: 'put',
+        response: config => {
+            return {
+                code: 200,
+                success: true,
+                data: null,
+                message: ''
+            }
+        }
+    },
+
+    {
+        url: `/vue-admin-template/table/del/${tableId}`,
+        type: 'delete',
+        response: config => {
+            return {
+                code: 200,
+                success: true,
+                data: null,
                 message: ''
             }
         }
