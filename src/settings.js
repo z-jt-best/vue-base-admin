@@ -1,16 +1,21 @@
 module.exports = {
+    title: '后台基本框架',
 
-  title: 'Vue Admin Template',
+    /**
+     * @type {boolean} true | false
+     * @description 是否固定头部
+     */
+    fixedHeader: false,
 
-  /**
-   * @type {boolean} true | false
-   * @description Whether fix the header
-   */
-  fixedHeader: false,
+    /**
+     * @type {boolean} true | false
+     * @description 是否显示LOGO
+     */
+    sidebarLogo: false,
 
-  /**
-   * @type {boolean} true | false
-   * @description Whether show the logo in sidebar
-   */
-  sidebarLogo: false
+    /**
+     * @type {boolean} true | false
+     * @description 实现显示tabViews
+     */
+    tagsView: true
 }

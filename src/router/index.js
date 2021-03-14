@@ -10,27 +10,36 @@ import Layout from '@/layout'
  * Note: sub-menu only appear when route children.length >= 1
  * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
  *
- * hidden: true                   if set true, item will not show in the sidebar(default is false)
- * alwaysShow: true               if set true, will always show the root menu
- *                                if not set alwaysShow, when item has more than one children route,
- *                                it will becomes nested mode, otherwise not show the root menu
- * redirect: noRedirect           if set noRedirect will no redirect in the breadcrumb
- * name:'router-name'             the name is used by <keep-alive> (must set!!!)
+ * hidden: true                   如果设置为false，则不显示在sideBar中(默认为false)
+ * alwaysShow: true               如果设置为true，则始终显示根路由(默认情况下，根路由下只有一个路由时，则会只显示根路由，跳转到子路由中去)
+ *                                
+ * redirect: noRedirect           如果设置为"noRedirect"，则点击面包屑中并不会发生重定向
+ * name:'router-name'             路由的name，用于缓存，必须设置(现在暂时没做keep-alive)
  * meta : {
-    roles: ['admin','editor']    control the page roles (you can set multiple roles)
-    title: 'title'               the name show in sidebar and breadcrumb (recommend set)
-    icon: 'svg-name'             the icon show in the sidebar
-    breadcrumb: false            if set false, the item will hidden in breadcrumb(default is true)
-    activeMenu: '/example/list'  if set path, the sidebar will highlight the path you set
+    roles: ['admin','editor']    控制路由是否有权限访问的角色数组(权限暂时没做)
+    title: 'title'               显示在sideBar和面包屑中的名字
+    icon: 'svg-name'             显示在sideBar的icon名字
+    breadcrumb: false            如果设置为false，则不会显示在面包屑中，默认为true
+    activeMenu: '/example/list'  如果设置了指定路由，则点击该路由时，则会高亮菜单该属性指向的路由
   }
  */
 
 /**
  * constantRoutes
- * a base page that does not have permission requirements
- * all roles can be accessed
+ * 常量路由，不需要权限即可访问的路由页面
  */
 export const constantRoutes = [
+    {
+        path: '/redirect',
+        component: Layout,
+        hidden: true,
+        children: [
+            {
+                path: '/redirect/:path(.*)',
+                component: () => import('@/views/redirect/index')
+            }
+        ]
+    },
     {
         path: '/login',
         component: () => import('@/views/login/index'),
@@ -52,7 +61,7 @@ export const constantRoutes = [
                 path: 'dashboard',
                 name: 'Dashboard',
                 component: () => import('@/views/dashboard/index'),
-                meta: { title: 'Dashboard', icon: 'dashboard' }
+                meta: { title: '首页', icon: 'dashboard' }
             }
         ]
     },
@@ -62,7 +71,7 @@ export const constantRoutes = [
         component: Layout,
         redirect: '/example/table',
         name: 'Example',
-        meta: { title: 'Example', icon: 'example' },
+        meta: { title: '示例', icon: 'example' },
         children: [
             {
                 path: 'table',
@@ -88,7 +97,7 @@ export const constantRoutes = [
                 path: 'index',
                 name: 'Form',
                 component: () => import('@/views/form/index'),
-                meta: { title: 'Form', icon: 'form' }
+                meta: { title: '表单示例', icon: 'form' }
             }
         ]
     },
@@ -99,7 +108,7 @@ export const constantRoutes = [
         redirect: '/nested/menu1',
         name: 'Nested',
         meta: {
-            title: 'Nested',
+            title: '多级菜单',
             icon: 'nested'
         },
         children: [
@@ -157,7 +166,7 @@ export const constantRoutes = [
         children: [
             {
                 path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-                meta: { title: 'External Link', icon: 'link' }
+                meta: { title: '跳转外链', icon: 'link' }
             }
         ]
     },
@@ -165,6 +174,9 @@ export const constantRoutes = [
     // 404 page must be placed at the end !!!
     { path: '*', redirect: '/404', hidden: true }
 ]
+
+// 需要权限才能访问的路由(暂时没做)
+export const asyncRoutes = []
 
 const createRouter = () =>
     new Router({
