@@ -1,3 +1,10 @@
+$mainColor: #2d8cf0;
+$mainBg: rgba(238, 242, 246, 1);
+$headLineSize: 18px; //用于大标题、分类页标题
+$titleSize: 14px; //用于菜单栏、标题、搜索筛选等文字
+$mainTextSize: 12px; //默认常规文字大小
+$auxiliarySize: 10px; //用于辅助文字
+
 // sidebar相关css属性
 $menuText: #bfcbd9;
 $menuActiveText: #409eff;
@@ -25,4 +32,10 @@ $sideBarWidth: 210px;
     subMenuBg: $subMenuBg;
     subMenuHover: $subMenuHover;
     sideBarWidth: $sideBarWidth;
+    mainColor: $mainColor;
+    mainBg: $mainBg;
+    headLineSize: $headLineSize;
+    titleSize: $titleSize;
+    mainTextSize: $mainTextSize;
+    auxiliarySize: $auxiliarySize;
 }

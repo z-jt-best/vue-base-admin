@@ -74,14 +74,17 @@ export default {
         }
     },
     methods: {
+        // 页数改变
         handleSizeChange(val) {
-            this.$emit('pagination', { page: this.currentPage, limit: val })
+            this.$emit('size-change', val)
             if (this.autoScroll) {
                 scrollTo(0, 800)
             }
         },
+
+        // 页码改变
         handleCurrentChange(val) {
-            this.$emit('pagination', { page: val, limit: this.pageSize })
+            this.$emit('current-change', val)
             if (this.autoScroll) {
                 scrollTo(0, 800)
             }

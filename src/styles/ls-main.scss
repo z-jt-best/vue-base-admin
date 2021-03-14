@@ -1,0 +1,718 @@
+/* 公共变量 */
+body{
+
+}
+	/* 页面主色--绿色#4eae31 */
+    /* 主题颜色的应用:在vue页面上引入<view :style="{ '--themescolor': themes.color }">值,只要--themescolor的名字对应上,该themes.color值会传到该公共css里 */
+	/* --themescolor:$mainColor;  */
+
+$primary:#ee4133;/* 蓝(原色)--主要的*/
+$secondary: #6c757d;/* 灰蓝--次要的*/
+$success: #28a745;/* 绿色--成功的 */
+$danger: #dc3545;/* 深红--危险 */
+$warning: #ffc107;/* 黄(原色)--警告*/
+$info: #17a2b8;/* 绿松石色--信息*/
+$light: #f8f9fa;/* 亮白色*/
+$dark: #343a40;/* 暗黑*/
+$muted: #6c757d;/* 灰黑*/
+$white: #fff;/* 白色*/
+$lightmuted:#B2B2B2;/* 浅灰色*/
+$bordercolor:$mainBg;/* 默认是取 #dee2e6,现在取背景颜色的值 */
+$backgroundcolor:$mainBg;
+    
+ /* 防止图片闪一下 */
+ image{will-change: transform}
+ 
+ /* 规定每一个card的底色及文字颜色，相当于element里的card */
+ .box{
+     background-color: #FFFFFF;
+     border-radius: 2px;
+     color: #333333;
+     .se-color{ color: #999999; }
+     .se-bg{ background-color: #f5f5f5; }
+ }
+ 
+ /* 统一每一个楼层之间的间距 */
+ .mb-floor{ margin-bottom: 30px;}
+  
+ .hover-current{ cursor: pointer;transform:translateY(0px);transition: all .25s  ease-in;&:hover { transform:translateY(-2px); box-shadow: 0 12px 36px rgba(0,0,0,0.1);} }/* 商品列表hover时底部出现阴影，一般是跟上面的.box一起用 */
+ .hover-opacity{ &:hover {.opacity-0{opacity: 1;}}}/* 用法，子元素加opacity-0隐藏，hover到父级元素时，让子元素opacity: 1显示出来,注意：为避免跟hover-current里的transition时间有冲突，opacity变化时间请在子组件里加入 */
+ .hover-scale1-1{ cursor: pointer;transition: all 1s;&:hover{ transform: scale(1.1)}}/* 全局hover时放大两倍(主要是图片时用) */
+ .hover-scale1-2{ cursor: pointer;transition: all 1s;&:hover{ transform: scale(1.2)}}/* 全局hover时放大两倍(主要是图片时用) */
+ .hover-scale2{ cursor: pointer;transition: all 1s;&:hover{ transform: scale(2) translateY(-25%);z-index: 999;box-shadow: 0 12px 36px rgba(0,0,0,0.5);background-color: #fff;border-radius: 3px;}}/* 全局hover时放大两倍(主要是图片时用) */
+ .hover-scale3{cursor: pointer;transition: all 1s;&:hover{ transform: scale(3) translateY(-25%);z-index: 999;box-shadow: 0 12px 36px rgba(0,0,0,0.5);background-color: #fff;border-radius: 3px;}}/* 全局hover时放大三倍(主要是图片时用) */
+ .hover-scale4{cursor: pointer;transition: all 1s;&:hover{ transform: scale(4) translateY(-25%);z-index: 999;box-shadow: 0 12px 36px rgba(0,0,0,0.5);background-color: #fff;border-radius: 3px;}}/* 全局hover时放大四倍(主要是图片时用) */
+ .hover-border{ cursor: move; &:hover { border-color: #2d8cf0; .d-none{ display: inline-block; } } }
+ .hover-border1{ &:hover { border-color: #2d8cf0; .d-none{ display: inline-block; } } }
+ .hover-move{ cursor: move; &:hover { .d-none{ display: inline-block; } } }
+
+ .main-hover:hover{ color: $mainColor!important; cursor: pointer;opacity: 0.6; }/* 全局hover时主文字变为主题颜色 */
+ .border-hover:hover{ color: $mainColor!important; cursor: pointer;opacity: 0.6; }/* 全局hover时主文字变为主题颜色 */
+ /* 全局的关于宽度的媒体查询 */
+ .media-screen-width { 
+     transition: all 1s; width: 1190px;
+     @media screen and (max-width: 1700px) and (min-width: 1500px) { width: 990px; }
+      @media screen and (max-width: 1500px) and (min-width: 1000px) { width: 890px; } 
+      @media screen and (max-width: 1000px) { width: 790px; } 
+ }
+ 
+ /* 统一每一个楼层之间的间距 */
+ .mb-floor{ margin-bottom: 30px;}
+ 
+/*  装修时用：hover到装修楼层时加上遮罩层*/
+ // .hover-floors{
+ //     position: relative;
+ //     .mask-layer{ display: none;position: absolute;width: 100%;height: 100%;left: 0;top: 0; }
+ //     &:hover{
+ //         .mask-layer{ display: inherit;background-color: rgba(0, 0, 0, 0.15); z-index: 2;box-shadow: rgba(45, 140, 240, 1) solid 2px;border: 2px dashed rgba(45, 140, 240, 1);border-radius: 5px;}
+ //     }
+ // }
+
+.clearfix { zoom: 1;}
+.clearfix:after{ content: " ";  display: table;  clear: both; }
+
+/* 阴影(备注：只能用px为单位，用rpx无效) */
+.shadow {box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)}/* 基础投影 */
+.shadow-sm {box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)}/* 浅色投影 */
+.shadow-lg {box-shadow: 0px 8px 24px rgba(114, 130, 138, 0.8)}/* 深色投影 */
+.shadow-current { box-shadow: 0 0 10px #000;z-index: 2; }/* 装修页面选中楼层的投影 */
+
+
+ 
+/* 定位 */
+.position-absolute{ position: absolute; }
+.position-fixed{ position: fixed; }
+.position-relative{ position: relative; }
+.position-sticky{ position: sticky; }
+.left-0{ left: 0; }
+.left-100{ left: 100%; }
+.top-0{ top: 0; }
+.top-44p{ top: 44px; }
+.top-100{ top: 100%; }
+.bottom-0{ bottom: 0; }
+.bottom-100{ bottom: 100% }
+.right-0{ right: 0; }
+.right-100{ right: 100%; }
+/* 宽高 */
+.w-100{ width: 100%;}
+.w-50{ width: 50%;}
+.w-25{ width: 25%;}
+.h-100{ height: 100%;}
+.h-75{ height: 75%; }
+.h-50{ height: 50%; }
+.h-25{ height: 25%; }
+/* 新增 */
+.w-auto{ width: auto; }
+.w-0{ width: 0; }
+.w-25p{ width: 25px;}
+.w-44p{ width: 44px;}
+.w-50p{ width: 50px;}
+.w-100p{ width: 100px;}
+.w-130p{ width: 130px;}
+.w-150p{ width: 150px;}
+.w-200p{ width: 200px;}
+.w-305p{ width: 305px;}
+.h-100p{ height: 100px;}
+.w-450p{ width: 450px; }
+.w-630p{ width: 630px; }
+.w-950p{ width: 950px; }
+.w-1190p{ width: 1190px; }
+.h-100vh{ height: 100vh;}
+.h-50vh{ height: 50vh;}
+.h-33vh{ height: 33vh;}
+.h-25vh{ height: 25vh;}
+.w-100vw{ width: 100vw;}
+.w-50vw{ width: 50vw;}
+.w-33vw{ width: 33vw;}
+.w-25vw{ width: 25vw;}
+
+.h-auto{ height: auto; }
+.h-0{ height: 0; }
+.h-28p{height: 28px;}/* 搜索框的标准高度 */
+.h-30p{height: 30px;}
+.h-44p{ height: 44px;}
+.h-50p{ height: 50px;}
+.h-200p{ height: 200px; }
+.h-300p{ height: 300px; }
+.h-400p{ height: 400px; }
+.h-600p{ height: 600px;}
+
+/* 字体 */
+.font-head{	font-size:$headLineSize; font-weight: bold; }//用于大标题、分类页标题
+.font-title{ font-size:$titleSize; }//用于菜单栏、标题、搜索筛选等文字
+.font-main{ font-size:$mainTextSize; }//默认常规文字大小
+.font-help{	font-size:$auxiliarySize; }//用于辅助文字
+.font{ font-size: 12px; }
+.font-sm{ font-size: 10px; }
+.font-md{ font-size: 15px; }
+.font-lg{ font-size: 20px; }
+.font-big{ font-size: 30px; }
+.font-weight{ font-weight: bold!important; }
+.font-weight-100{ font-weight: 100!important; }
+.font-weight-400{ font-weight: 400!important; }
+/* 以下为新增的 */
+.font-0{ font-size: 0; }/* view下的image子元素，image不设高度的话，会不占满父级元素，这时加上font-size: 0;就能把空出的2px空白给填上 */
+.font-36{ font-size: 36px; }
+.font-32{ font-size: 32px; }
+.font-30{ font-size: 30px; }
+.font-28{ font-size: 28px; }
+.font-24{ font-size: 24px; }
+.font-20{ font-size: 20px; }
+.font-18{ font-size: 18px; }
+.font-16{ font-size: 16px; }
+.font-15{ font-size: 15px; }
+.font-14{ font-size: 14px; }
+.font-12{ font-size: 12px; }
+.font-10{ font-size: 10px; }
+.word-breakall{ word-break: break-all;}
+.font-arial{font-family:arial;}/* 数字专用，数字用这个字体会比默认的好看 */
+
+/* 字距 */
+.letter-sp1{letter-spacing:1px}
+.letter-sp2{letter-spacing:2px}
+.letter-sp5{letter-spacing:5px}
+
+.line-h0{ line-height: 0!important; }
+.line-h{ line-height: 1!important; }
+.line-h-sm{ line-height: 1.2!important; }
+.line-h-md{ line-height: 1.5!important; }
+.line-h-lg{ line-height: 2!important; }
+.line-h-big{ line-height: 3!important; }
+
+.line-through{ text-decoration: line-through; }
+
+.text-center{ text-align: center; }
+.text-left{ text-align: left; }
+.text-right{ text-align: right; }
+
+/* scroll-view */
+.scroll-row{ width: 100%;white-space: nowrap; }
+/* 新增 */
+.text-nowrap{ white-space: nowrap;word-wrap:normal; }/* 强制不换行 */
+.text-wrap{ white-space: normal; word-wrap:break-word; word-break:break-all; }/* 强制换行(且所有文字是breakall),但遇到一个换行符才会换行(不保留空格) */
+.text-pre-line{ white-space: pre-line;word-wrap:break-word; word-break:break-all;}/*自动换行(且所有文字是breakall),遇到一个换行符才会换行 (保留空格，但多个空格合并成一个)*/
+.text-pre-wrap{ white-space: pre-wrap;word-wrap:break-word; word-break:break-all;}/*自动换行(且所有文字是breakall),遇到一个换行符才会换行(保留全部空格)  */
+
+.border-box{box-sizing: border-box!important;}
+.content-box{box-sizing: content-box!important;}
+.row { box-sizing: border-box!important; display: flex!important; flex-direction: row; flex-wrap: wrap;}/* 横向flex但会换行 */
+[class*='col-'],[class*='span-'],[class*='span24-'] { min-height: 1px;box-sizing: border-box!important;}
+/* 栅栏二 */
+.span-1{ width: 5%; } 
+.span-2{ width: 10%; } 
+.span-3{ width: 15%; } 
+.span-4{ width: 20%;} 
+.span-5{ width: 25%; } 
+.span-6{ width: 30%; }
+.span-7{ width: 35%; }
+.span-8{ width: 40%; }
+.span-9{ width: 45%; }
+.span-10{ width: 50%; }
+.span-11{ width: 55%; }
+.span-12{ width: 60%; }
+.span-13{ width: 65%; }
+.span-14{ width: 70%; }
+.span-15{ width: 75%; }
+.span-16{ width: 80%; }
+.span-17{ width: 85%; }
+.span-18{ width: 90%; }
+.span-19{ width: 95%; }
+.span-20{ width: 100%; }
+/* 栅栏三 */
+.span24-1{ width: 4.17%; } 
+.span24-2{ width: 8.33%; } 
+.span24-3{ width: 12.5%; } 
+.span24-4{ width: 16.67%;} 
+.span24-5{ width: 20.83%; } 
+.span24-6{ width: 25%; }
+.span24-7{ width: 29.17%; }
+.span24-8{ width: 33.33%; }
+.span24-9{ width: 37.5%; }
+.span24-10{ width: 41.67%; }
+.span24-11{ width: 45.83%; }
+.span24-12{ width: 50%; }
+.span24-13{ width: 54.17%; }
+.span24-14{ width: 58.33%; }
+.span24-15{ width: 62.5%; }
+.span24-16{ width: 66.67%; }
+.span24-17{ width: 70.83%; }
+.span24-18{ width: 75%; }
+.span24-19{ width: 79.17%; }
+.span24-20{ width: 83.33%; }
+.span24-21{ width: 87.5%; }
+.span24-22{ width: 91.67%; }
+.span24-23{ width: 95.83%; }
+.span24-24{ width: 100%; }
+
+/* flex布局 */
+.d-flex{ display: flex; }
+.d-grid{ display: grid; }
+.d-block{ display: block; }
+.d-inline{ display: inline; }
+.d-inline-block{ display: inline-block; }
+.d-contents{ display: contents; }//这个类似于inline-block，但contents 使 div 不产生任何框 ，因此不会渲染其背景 边框 和 内边距 ，但颜色 / 字体等继承的属性还是会对其子元素产生效果
+.d-none{ display: none;}
+
+.flex-1{ flex: 1; }
+.flex-2{ flex: 2; }
+.flex-3{ flex: 3; }
+.flex-4{ flex: 4; }
+.flex-5{ flex: 5; }
+.flex-column{ flex-direction: column; }
+.flex-row{ flex-direction: row; }
+.flex-wrap{ flex-wrap: wrap; }
+.flex-nowrap{ flex-wrap: nowrap; }
+.flex-shrink{flex-shrink: 0;}
+.j-start{ justify-content: flex-start; }
+.j-center{ justify-content: center; }
+.j-end{ justify-content: flex-end; }
+.j-sb{ justify-content: space-between; }
+.a-center{ align-items:center; }
+.a-start{ align-items: flex-start; }
+.a-end{ align-items:flex-end; }
+.a-baseline{ align-items: baseline;}
+.a-stretch{ align-items: stretch; }
+.a-self-start{ align-self: flex-start; }
+.a-self-auto{ align-self: auto; }
+.a-self-end{ align-self: flex-end; }
+.a-self-stretch{ align-self:stretch; }
+.a-self-baseline{ align-self:baseline; }
+/* 以下为新增 */
+/* 垂直对齐方式(可用于任何布局) */
+.v-baseline{ vertical-align: baseline; }/* 默认。元素放置在父元素的基线上 */
+.v-sub{ vertical-align: sub; }/*垂直对齐文本的下标 */
+.v-super{ vertical-align: super; }/* 	垂直对齐文本的上标 */
+.v-top{ vertical-align: top; }/* 把元素的顶端与行中最高元素的顶端对齐 */
+.v-text-top{ vertical-align: text-top; }/* 把元素的顶端与父元素字体的顶端对齐 */
+.v-middle{ vertical-align: middle; }/* 把此元素放置在父元素的中部 */
+.v-bottom{ vertical-align: bottom; }/* 把元素的顶端与行中最低的元素的顶端对齐 */
+.v-text-bottom{ vertical-align: text-bottom; }/* 把元素的底端与父元素字体的底端对齐 */
+
+/* flex横向 */
+.flex-auto{ flex: auto; }/* 即是:flex:1 1 auto;[第一个是放大值(默认为0，即如果存在剩余空间，也不放大),第二个是缩小值(默认为1，如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小),第三个固定值(跟width或height属性一样的值（比如350px），则项目将占据固定空间)] */
+.flex-none{ flex: none; }/* 即是:flex:0 0 auto; */
+.flex-center{ box-sizing: border-box;display: flex;align-items: center;justify-content: center;}/* X轴(主轴)方向-所有元素居中(包括横向的和垂直方向的) */
+.flex-start{ box-sizing: border-box;display: flex;align-items: center;justify-content: flex-start;}/* X轴(主轴)方向-所有元素居中(子元素-横向靠左对齐) */
+.flex-end{ box-sizing: border-box; display: flex; align-items: center; justify-content: flex-end;}/* X轴(主轴)方向-所有元素垂直方向居中(子元素-横向靠右对齐)*/
+.flex-between{ box-sizing: border-box; display: flex; align-items: center; justify-content: space-between;}/* X轴(主轴)方向-所有元素垂直方向居中(两端对齐,子元素之间的间隔都相等。只有一个子元素时是左对齐)*/
+.flex-around{ box-sizing: border-box; display: flex; align-items: center; justify-content: space-around;}/* X轴(主轴)方向-所有元素垂直方向居中(每个子元素两侧的间隔相等。所以，子元素之间的间隔比子元素与边框的间隔大一倍。只有一个子元素时是居中,)*/
+/* flex竖向flex-direction: column; */
+[class*='flex-col-']{ box-sizing: border-box; display: flex; flex-direction: column;}
+.flex-col-center{ justify-content: center;align-items: center; }/* Y轴(主轴)方向-所有元素居中(包括横向的和垂直方向的都居中)*/
+.flex-col-start{ justify-content: center;align-items: flex-start;}/* Y轴(主轴)方向-所有元素垂直方向居中(子元素-横向靠左对齐)*/
+.flex-col-end{ justify-content: center;align-items: flex-end;}/* Y轴(主轴)方向-所有元素垂直方向居中(子元素-横向靠左对齐)*/
+.flex-col-baseline{ justify-content: center;align-items: baseline;}/* Y轴(主轴)方向-所有元素垂直方向居中(X轴-项目的第一行文字的基线对齐)*/
+.flex-col-stretch{ justify-content: center;align-items: stretch;}/* Y轴(主轴)方向-所有元素垂直方向居中(X轴-如果项目未设置高度或设为auto，将占满整个容器的高度)*/
+
+.flex-col-between{ justify-content: space-between;align-items: flex-start;}/* Y轴(主轴)方向-所有元素垂直方向两端对齐(子元素-横向靠左对齐)*/
+.flex-col-around{ justify-content: space-around;align-items: flex-start;}/* Y轴(主轴)方向-所有元素每个子元素上下之间的间隔相等(子元素-横向靠左对齐)*/
+
+/* grid网格布局 */
+.grid-column1{ display: grid;grid-template-columns: repeat(1, 1fr);}/* grid网格布局,1列,1*/
+.grid-column2{ display: grid;grid-template-columns: repeat(2, 1fr);}/* grid网格布局,2列,1:1*/
+.grid-column3{ display: grid;grid-template-columns: repeat(3, 1fr);}/* grid网格布局,3列,1:1:1*/
+.grid-column4{ display: grid;grid-template-columns: repeat(4, 1fr);}/* grid网格布局,4列,1:1:1:1*/
+.grid-column5{ display: grid;grid-template-columns: repeat(5, 1fr);}/* grid网格布局,5列,1:1:1:1:1*/
+.grid-column6{ display: grid;grid-template-columns: repeat(6, 1fr);}/* grid网格布局,6列,1:1:1:1:1:1*/
+
+.grid-c-10{grid-column-gap: 10px;}/*每列之间的间距 */
+.grid-r-10{grid-row-gap: 10px;}/*每行之间的间距  */
+.grid-rc-10{grid-column-gap: 10px;grid-row-gap: 10px;}/*每行及每列之间的间距  */
+.grid-gap10{grid-gap: 10px;}/*每行及每列之间的间距  */
+
+.grid-c-span2{grid-column: span 2;}/*grid里面的元素 占据两列的位置 */
+.grid-c-span3{grid-column: span 3;}/*grid里面的元素 占据三列的位置 */
+.grid-c-span4{grid-column: span 4;}/*grid里面的元素 占据四列的位置 */
+.grid-c-span5{grid-column: span 5;}/*grid里面的元素 占据五列的位置 */
+.grid-r-span2{grid-row: span 2;}/*grid里面的元素 占据两行的位置 */
+.grid-r-span3{grid-row: span 3;}/*grid里面的元素 占据两行的位置 */
+.grid-r-span4{grid-row: span 4;}/*grid里面的元素 占据两行的位置 */
+.grid-r-span5{grid-row: span 5;}/*grid里面的元素 占据两行的位置 */
+
+
+/* 浮动 与flex不兼容*/
+.float-left{float: left;}
+.float-right{float: right;}
+
+/* Border */
+
+.border{  border : 1px solid $bordercolor;}/* 四边框有波打线-1px宽/--bordercolor色 */
+.border-top{ border-top : 1px solid $bordercolor; }/* 上边框波打线-1px宽、--bordercolor色 */
+.border-right{ border-right : 1px solid $bordercolor;}/* 右边框波打线-1px宽、--bordercolor色 */
+.border-bottom{ border-bottom : 1px solid $bordercolor;}/* 下边框波打线-1px宽、--bordercolor色 */
+.border-left{ border-left : 1px solid $bordercolor;}/* 左边框波打线-1px宽、--bordercolor色 */
+.border-none{ border: none; } 
+/* 新增 */
+.border-top-10bg{ border-top: 10px solid $backgroundcolor; }/* 上边框波打线-10px宽、背景色 */
+.border-bottom-10bg{ border-bottom: 10px solid $backgroundcolor;}/* 下边框波打线-10px宽、背景色 */
+
+.border-dotted-ccc{ border: 1px dotted #CCCCCC; }/* dotted:点状 */
+.border-dashed-ccc{ border: 1px dashed #CCCCCC; }/* dashed:虚线 */
+
+.border-0{ border-width: 0; }
+.border-top-0{ border-top-width: 0; }
+.border-right-0{ border-right-width: 0; }
+.border-bottom-0{ border-bottom-width: 0; }
+.border-left-0{ border-left-width: 0; }
+
+.border-primary{ border-color: $primary!important }
+.border-secondary{ border-color:$secondary!important }
+.border-success{ border-color: $success!important }
+.border-danger{ border-color: $danger!important }
+.border-warning{ border-color:$warning!important }
+.border-info{ border-color: $info!important }
+.border-light{ border-color: $light!important }
+.border-dark{ border-color: $dark!important }
+.border-white{ border-color: $white!important }
+/* 新增 */
+.border-main{  border-color: $mainColor!important}
+.border-f1{border-color: #F1F1F1!important;}
+
+.rounded{ border-radius: 3px; }
+.rounded-circle{ border-radius:100%; }
+.rounded-0{ border-radius:0; }
+/* 新增 */
+.rounded-3{ border-radius: 3px; }
+.rounded-4{ border-radius: 4px; }
+.rounded-5{ border-radius: 5px; }
+.rounded-10{ border-radius: 10px; }
+.rounded-11{ border-radius: 11px; }
+.rounded-12{ border-radius: 12px; }
+.rounded-15{ border-radius: 15px; }
+.rounded-20{ border-radius: 20px; }
+.rounded-25{ border-radius: 25px; }
+.rounded-50{ border-radius: 50px; }
+
+/* color */
+
+
+.text-primary{ color:$primary!important; }
+.text-secondary{ color:$secondary!important; }
+.text-success{ color:$success!important; }
+.text-danger{ color: $danger!important; }
+.text-warning{ color:$warning!important; }
+.text-info{ color: $info!important; }
+.text-light{ color: $light!important; }
+.text-dark{ color: $dark!important; }
+.text-muted{ color: $muted!important; }
+.text-light-muted{ color: $lightmuted!important; }
+.text-white{ color: $white!important; }
+.text-blue{ color: #2D8CF0!important; }
+/* 新增的灰色 */
+.text-333{ color: #333333!important; }
+.text-555{ color: #555555!important; }
+.text-666{ color: #666666!important; }
+.text-999{ color: #999999!important; }
+.text-bbb{ color: #BBBBBB!important; }
+.text-ccc{ color: #CCCCCC!important; }
+.text-ddd{ color: #DDDDDD!important; }
+.text-eee{ color: #EEEEEE!important; }
+.text-fff{ color: #FFFFFF!important; }
+.text-blue{ color: #2D8CF0!important; }
+.text-main{color: $mainColor;}
+
+
+
+.bg-primary{ background-color:$primary!important; }
+.bg-secondary{ background-color:$secondary!important; }
+.bg-success{ background-color:$success!important; }
+.bg-danger{ background-color: $danger!important; }
+.bg-warning{ background-color:$warning!important; }
+.bg-info{ background-color: $info!important; }
+.bg-light{ background-color: $light!important; }
+.bg-dark{ background-color: $dark!important; }
+.bg-white{ background-color: $white!important; }
+.bg-light-secondary{background-color: #F1F1F1!important;}
+/* 新增 */
+.bg-bg{ background-color: $backgroundcolor!important; }
+.bg-333{ background-color: #333333!important; }
+.bg-555{ background-color: #555555!important; }
+.bg-666{ background-color: #666666!important; }
+.bg-999{ background-color :#999999!important; }
+.bg-aaa{ background-color: #AAAAAA!important; }
+.bg-bbb{ background-color: #BBBBBB!important; }
+.bg-ccc{ background-color: #CCCCCC!important; }
+.bg-ddd{ background-color: #DDDDDD!important; }
+.bg-eee{ background-color: #EEEEEE!important; }
+.bg-f9{ background-color: #f9f9f9!important; }
+.bg-f5{ background-color: #f5f5f5!important; }
+.bg-fff{ background-color: #FFFFFF!important; }
+.bg-fa{ background-color: #fafafa!important; }
+.bg-main{ background-color: $mainColor!important; }
+.bg-transparent{background: transparent!important;}
+
+/* 透明度 */
+.opacity-0{opacity:0}
+.opacity-2{opacity:0.2}
+.opacity-4{opacity:0.4}
+.opacity-6{opacity:0.6}
+.opacity-8{opacity:0.8}
+.opacity-10{opacity:1}
+
+/* Spacing */
+.m-0 { margin-left: 0;margin-right: 0;margin-top: 0;margin-bottom: 0;}
+.m-3 { margin-left: 3px;margin-right: 3px;margin-top: 3px;margin-bottom: 3px;}
+.m-5 { margin-left: 5px;margin-right: 5px;margin-top: 5px;margin-bottom: 5px;}
+.m-10 { margin-left: 10px;margin-right: 10px;margin-top: 10px;margin-bottom: 10px;}
+.m-15 { margin-left: 15px;margin-right: 15px;margin-top: 15px;margin-bottom: 15px;}
+.m-20 { margin-left: 20px;margin-right: 20px;margin-top: 20px;margin-bottom: 20px;}
+.m-25 { margin-left: 25px;margin-right: 25px;margin-top: 25px;margin-bottom: 25px;}
+.m-30 { margin-left: 30px;margin-right: 30px;margin-top: 30px;margin-bottom: 30px;}
+.m-40 { margin-left: 40px;margin-right: 40px;margin-top: 40px;margin-bottom: 40px;}
+.m-50 { margin-left: 50px;margin-right: 50px;margin-top: 50px;margin-bottom: 50px;}
+.m-60 { margin-left: 60px;margin-right: 60px;margin-top: 60px;margin-bottom: 60px;}
+/* 新增 */
+.m-auto { margin: auto;}
+.m-0-auto { margin: 0 auto;}//水平居中
+
+.mx-0 { margin-left: 0;margin-right: 0;}
+.mx-3 { margin-left: 3px;margin-right: 3px;}
+.mx-5 { margin-left: 5px;margin-right: 5px;}
+.mx-10 { margin-left: 10px;margin-right: 10px;}
+.mx-15 { margin-left: 15px;margin-right: 15px;}
+.mx-20 { margin-left: 20px;margin-right: 20px;}
+.mx-25 { margin-left: 25px;margin-right: 25px;}
+.mx-30 { margin-left: 30px;margin-right: 30px;}
+.mx-40 { margin-left: 40px;margin-right: 40px;}
+.mx-50 { margin-left: 50px;margin-right: 50px;}
+.mx-60 { margin-left: 60px;margin-right: 60px;}
+
+.my-0 { margin-top: 0;margin-bottom: 0;}
+.my-3 { margin-top: 3px;margin-bottom: 3px;}
+.my-5 { margin-top: 5px;margin-bottom: 5px;}
+.my-10 { margin-top: 10px;margin-bottom: 10px;}
+.my-15 { margin-top: 15px;margin-bottom: 15px;}
+.my-20 { margin-top: 20px;margin-bottom: 20px;}
+.my-25 { margin-top: 25px;margin-bottom: 25px;}
+.my-30 { margin-top: 30px;margin-bottom: 30px;}
+.my-40 { margin-top: 40px;margin-bottom: 40px;}
+.my-50 { margin-top: 50px;margin-bottom: 50px;}
+.my-60 { margin-top: 60px;margin-bottom: 60px;}
+
+.mt-0 { margin-top: 0;}
+.mt-3 { margin-top: 3px;}
+.mt-5 { margin-top: 5px;}
+.mt-auto { margin-top: auto;}
+.mt-8 { margin-top: 10px;}
+.mt-10 { margin-top: 10px;}
+.mt-15 { margin-top: 15px;}
+.mt-20 { margin-top: 20px;}
+.mt-25 { margin-top: 25px;}
+.mt-30 { margin-top: 30px;}
+.mt-40 { margin-top: 40px;}
+.mt-50 { margin-top: 50px;}
+.mt-60 { margin-top: 60px;}
+
+.mb-0 { margin-bottom: 0;}
+.mb-3 { margin-bottom: 3px;}
+.mb-5 { margin-bottom: 5px;}
+.mb-auto { margin-bottom: auto;}
+.mb-10 { margin-bottom: 10px;}
+.mb-15 { margin-bottom: 15px;}
+.mb-20 { margin-bottom: 20px;}
+.mb-25 { margin-bottom: 25px;}
+.mb-30 { margin-bottom: 30px;}
+.mb-40 { margin-bottom: 40px;}
+.mb-50 { margin-bottom: 50px;}
+.mb-60 { margin-bottom: 60px;}
+
+.ml-0 { margin-left: 0;}
+.ml-3 { margin-left: 3px;}
+.ml-5 { margin-left: 5px;}
+.ml-auto { margin-left: auto;}
+.ml-10 { margin-left: 10px;}
+.ml-15 { margin-left: 15px;}
+.ml-20 { margin-left: 20px;}
+.ml-25 { margin-left: 25px;}
+.ml-30 { margin-left: 30px;}
+.ml-40 { margin-left: 40px;}
+.ml-50 { margin-left: 50px;}
+.ml-60 { margin-left: 60px;}
+
+.mr-0 { margin-right: 0;}
+.mr-3 { margin-right: 3px;}
+.mr-5 { margin-right: 5px;}
+.mr-auto { margin-right: auto;}
+.mr-10 { margin-right: 10px;}
+.mr-15 { margin-right: 15px;}
+.mr-20 { margin-right: 20px;}
+.mr-25 { margin-right: 25px;}
+.mr-30 { margin-right: 30px;}
+.mr-40 { margin-right: 40px;}
+.mr-50 { margin-right: 50px;}
+.mr-60 { margin-right: 60px;}
+
+.p-0 {padding-left: 0;padding-right: 0;padding-top: 0;padding-bottom: 0;}
+.p-3 {padding-left: 3px;padding-right: 3px;padding-top: 3px;padding-bottom:3px;}
+.p-5 {padding-left: 5px;padding-right: 5px;padding-top: 5px;padding-bottom:5px;}
+.p-10 {padding-left: 10px;padding-right: 10px;padding-top: 10px;padding-bottom: 10px;}
+.p-15 {padding-left: 15px;padding-right: 15px;padding-top: 15px;padding-bottom: 15px;}
+.p-20 {padding-left: 20px;padding-right: 20px;padding-top: 20px;padding-bottom: 20px;}
+.p-25 {padding-left: 25px;padding-right: 25px;padding-top: 25px;padding-bottom: 25px;}
+
+.px-0 { padding-left: 0;padding-right: 0;}
+.px-3 { padding-left: 3px;padding-right: 3px;}
+.px-5 { padding-left: 5px;padding-right: 5px;}
+.px-10 { padding-left: 10px;padding-right: 10px;}
+.px-15 { padding-left: 15px;padding-right: 15px;}
+.px-20 { padding-left: 20px;padding-right: 20px;}
+.px-25 { padding-left: 25px;padding-right: 25px;}
+.px-30 { padding-left: 30px;padding-right: 30px;}
+.px-40 { padding-left: 40px;padding-right: 40px;}
+.px-50 { padding-left: 50px;padding-right: 50px;}
+.px-60 { padding-left: 60px;padding-right: 60px;}
+
+.py-0 { padding-top: 0;padding-bottom: 0;}
+.py-3 { padding-top: 3px;padding-bottom: 3px;}
+.py-5 { padding-top: 5px;padding-bottom: 5px;}
+.py-10 { padding-top: 10px;padding-bottom: 10px;}
+.py-15 { padding-top: 15px;padding-bottom: 15px;}
+.py-20 { padding-top: 20px;padding-bottom: 20px;}
+.py-25 { padding-top: 25px;padding-bottom: 25px;}
+.py-30 { padding-top: 30px;padding-bottom: 30px;}
+.py-40 { padding-top: 40px;padding-bottom: 40px;}
+.py-50 { padding-top: 50px;padding-bottom: 50px;}
+.py-60 { padding-top: 60px;padding-bottom: 60px;}
+
+.pt-0 { padding-top: 0;}
+.pt-3 { padding-top: 3px;}
+.pt-5 { padding-top: 5px;}
+.pt-10 { padding-top: 10px;}
+.pt-15 { padding-top: 15px;}
+.pt-20 { padding-top: 20px;}
+.pt-25 { padding-top: 25px;}
+.pt-30 { padding-top: 30px;}
+.pt-40 { padding-top: 40px;}
+.pt-50 { padding-top: 50px;}
+.pt-60 { padding-top: 60px;}
+.pt-44 { padding-top: 44px;}
+
+.pb-0 { padding-bottom: 0;}
+.pb-3 { padding-bottom: 3px;}
+.pb-5 { padding-bottom: 5px;}
+.pb-8 { padding-bottom: 8px;}
+.pb-10 { padding-bottom: 10px;}
+.pb-15 { padding-bottom: 15px;}
+.pb-20 { padding-bottom: 20px;}
+.pb-25 { padding-bottom: 25px;}
+.pb-30 { padding-bottom: 30px;}
+.pb-40 { padding-bottom: 40px;}
+.pb-50 { padding-bottom: 50px;}
+.pb-60 { padding-bottom: 60px;}
+.pb-44 { padding-bottom: 44px;}
+.pb-100pre { padding-bottom: 100%;}//指定图片正方形用
+
+.pl-0 { padding-left: 0;}
+.pl-3 { padding-left: 3px;}
+.pl-5 { padding-left: 5px;}
+.pl-10 { padding-left: 10px;}
+.pl-15 { padding-left: 15px;}
+.pl-20 { padding-left: 20px;}
+.pl-25 { padding-left: 25px;}
+.pl-30 { padding-left: 30px;}
+.pl-40 { padding-left: 40px;}
+.pl-50 { padding-left: 50px;}
+.pl-60 { padding-left: 60px;}
+
+.pr-0 { padding-right: 0;}
+.pr-3 { padding-right: 3px;}
+.pr-5 { padding-right: 5px;}
+.pr-10 { padding-right: 10px;}
+.pr-15 { padding-right: 15px;}
+.pr-20 { padding-right: 20px;}
+.pr-25 { padding-right: 25px;}
+.pr-30 { padding-right: 30px;}
+.pr-40 { padding-right: 40px;}
+.pr-50 { padding-right: 50px;}
+.pr-60 { padding-right: 60px;}
+
+/* 新增 */
+.zindex-1 {z-index: 1!important;}
+.zindex-2 {z-index: 2!important;}
+.zindex-99 {z-index: 99!important;}
+.zindex-109 {z-index: 109!important;}
+.zindex-9999 {z-index: 9999!important;}
+
+/* 新增 */
+.overflow-h{ overflow: hidden; }
+.overflow-x{ overflow-x: auto; }
+.overflow-x-h{ overflow-x: hidden; }
+.overflow-x-scroll{ overflow-x: scroll; }
+.overflow-y{ overflow-y: auto; }
+.overflow-y-h{ overflow-y: hidden; }
+.overflow-y-scroll{ overflow-y: scroll; }
+.overflow-scroll {overflow: scroll; }
+.overflow-auto {overflow: auto; }
+.overflow-visible {overflow: visible; }
+
+/* 防文字溢出*/
+[class*='line-clamp']{ text-overflow:ellipsis; overflow: hidden; }
+.line-clamp1{ display: inline-block; width: 100%; white-space: nowrap; }/* 作用：限制只显示1行,超出部分以...显示,备注:不能用-webkit-line-clamp:1(因为这样当出现...时行距会发生变化) */
+.line-clamp2{ display: -webkit-inline-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-wrap:break-word; word-break:break-all; }/* 作用：限制只显示2行,超出部分以...显示*/
+.line-clamp3{ display: -webkit-inline-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; word-wrap:break-word; word-break:break-all; }/* 作用：限制只显示3行,超出部分以...显示*/
+.line-clamp4{ display: -webkit-inline-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; word-wrap:break-word; word-break:break-all; }/* 限制只显示4行,超出部分以...显示 */
+.line-clamp5{ display: -webkit-inline-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; word-wrap:break-word; word-break:break-all; }/* 限制只显示5行,超出部分以...显示 */
+
+
+/* 在父组件不是flex布局的情况下●子●元素水平居(屏幕)中--备注:父组件必须是class="position-relative"或者父组件是body*/
+.center-x{ position: absolute; left: 50%; transform: translate(-50%,0);}
+/* 在父组件不是flex布局的情况下●子●元素垂直居(屏幕)中--备注:父组件必须是class="position-relative"或者父组件是body*/
+.center-y{ position: absolute; top: 50%; transform: translate(0,-50%);}
+/* 在父组件不是flex布局的情况下●子●元素水平及垂直居(屏幕)中--备注:父组件必须是class="position-relative"或者父组件是body */
+.center-xy{ position: absolute; left: 50%; top: 50%;transform: translate(-50%,-50%);}
+
+/* 线性渐变 */
+.l-gradient-l{ background-image: linear-gradient(to right, var(--themescolor), var(--gradientcolor));}/* 从左到右线性主题色渐变 */
+.l-gradient-lt{ background-image: linear-gradient(to right bottom, var(--themescolor), var(--gradientcolor));}/* 从左上到右下线性主题色渐变 */
+.l-gradient-lb{ background-image: linear-gradient(to right top, var(--themescolor), var(--gradientcolor));}/* 从左下到右上线性主题色渐变 */
+.l-gradient-r{ background-image: linear-gradient(to left, var(--themescolor), var(--gradientcolor));}/* 从右到左线性主题色渐变 */
+.l-gradient-rt{ background-image: linear-gradient(to left bottom, var(--themescolor), var(--gradientcolor));}/* 从右上到左下线性主题色渐变 */
+.l-gradient-rb{ background-image: linear-gradient(to left top, var(--themescolor), var(--gradientcolor));}/* 从右下到左上线性主题色渐变 */
+.l-gradient-t{ background-image: linear-gradient(to bottom, var(--themescolor), var(--gradientcolor));}/* 从上到下线性主题色渐变 */
+.l-gradient-b{ background-image: linear-gradient(to top, var(--themescolor), var(--gradientcolor));}/* 从下到上线性主题色渐变 */
+
+/* 径向渐变 */
+.r-gradient-e-out{ background-image: Radial-gradient(ellipse,var(--themescolor), var(--gradientcolor));}/* 从中心向外发散椭圆形(默认值是ellipse椭圆形)径向主题色渐变 */
+.r-gradient-e-in{ background-image: Radial-gradient(ellipse,var(--gradientcolor),var(--themescolor));}/* 从中心向内发散椭圆形(默认值是ellipse椭圆形)径向主题色渐变 */
+.r-gradient-c-out{ background-image: Radial-gradient(circle,var(--themescolor), var(--gradientcolor));}/* 从中心向外发散圆心径向主题色渐变*/
+.r-gradient-c-in{ background-image: Radial-gradient(circle, var(--gradientcolor),var(--themescolor));}/* 从中心向内发散圆心径向主题色渐变 */
+
+/* 动画 */
+.translate3d0{transform:translate3d(0,0,0)}/* position:fiexd;时的防抖 */
+.translateX120{transition: all 1.5s;transform: translateX(120%);}
+.translateX150{transition: all 1.5s;transform: translateX(150%);}
+.translateX0{transition: all 1.5s;transform: translateX(0%);}
+.transition-all05{transition: all 0.5s}
+.transition-all10{transition: all 1s}
+.transition-all15{transition: all 1.5s}
+.zoom-out0002{animation: zoom-out0005 0.2s linear;}@keyframes zoom-out0005 {0%{  transform :scale(0);}100%{  transform :scale(1);}}/* 缩小从0放大到1，动画时间0.2秒 */
+.zoom-out0005{animation: zoom-out0005 0.5s linear;}@keyframes zoom-out0005 {0%{  transform :scale(0);}100%{  transform :scale(1);}}/* 缩小从0放大到1，动画时间0.5秒 */
+.zoom-out0010{animation: zoom-out0010 1s linear;}@keyframes zoom-out0010 {0%{  transform :scale(0);}100%{  transform :scale(1);}}/* 缩小从0放大到1，动画时间1秒 */
+.zoom-out0910{animation: zoom-out0910 1s linear;}@keyframes zoom-out0910 {0%{  transform :scale(0.9);}100%{  transform :scale(1);}}/* 缩小从0.9放大到1，动画时间1秒 */
+.zoom-in1110{animation: zoom-in1110 1s linear;}@keyframes zoom-in1110 {0%{  transform :scale(1.1);}100%{  transform :scale(1);}}/* 缩小从1.1缩小到1，动画时间1秒 */
+.zoom-in-out0910{animation: zoom-in-out0910 1s linear;}@keyframes zoom-in-out0910 {0%{  transform :scale(1);}50%{  transform :scale(0.9);}100%{  transform :scale(1);}}/* 缩小0.9倍后再还原，动画时间1秒 */
+.zoom-in-out1110{animation: zoom-in-out1110 1s linear;}@keyframes zoom-in-out1110 {0%{  transform :scale(1);}50%{  transform :scale(1.1);}100%{  transform :scale(1);}}/* 放大1.1倍后再还原，动画时间1秒 */
+.zoom-in-out1210{animation: zoom-in-out1210 1s linear;}@keyframes zoom-in-out1210 {0%{  transform :scale(1);}50%{  transform :scale(1.2);}100%{  transform :scale(1);}}/* 放大1.2倍后再还原，动画时间1秒 */
+.zoom-in-out1215{animation: zoom-in-out1215 1.5s linear;}@keyframes zoom-in-out1215 {0%{  transform :scale(1);}50%{  transform :scale(1.2);}100%{  transform :scale(1);}}/* 放大1.2倍后再还原，动画时间1.5秒 */
+.zoom-in-out1510{animation: zoom-in-out1510 1s linear;}@keyframes zoom-in-out1510 {0%{  transform :scale(1);}50%{  transform :scale(1.5);}100%{  transform :scale(1);}}/* 放大1.5倍后再还原，动画时间1秒 */
+.zoom-in-out2010{animation: zoom-in-out2010 1s linear;}@keyframes zoom-in-out2010 {0%{  transform :scale(1);}50%{  transform :scale(2);}100%{  transform :scale(1);}}/* 放大2倍后再还原，动画时间1秒 */
+
+.cursor-pointer{ cursor: pointer; }
+.cursor-move{ cursor: move; }
+.cursor-not-allowed{ cursor: not-allowed; }
+.cursor-zoom-in{ cursor: zoom-in; }
+.cursor-zoom-out{ cursor: zoom-out; }
+
+/* 辅助 */
+[class*='mask-percent']{ position: fixed; width: 100%; height: 100%; left:0; background: rgba(0, 0, 0, 0.65); z-index: 999;}
+.mask-percent-s { top:0;}/* popup等插件要用到的黑色透明容器(子元素能设定高度百分比,但只能放在HTML的最外层父级元素里),show时的状态(top: 0;)*/
+.mask-percent-h { top:100%; }/* popup hidden时的状态(top: 100%;)*/
+[class*='mask-wrapper']{ position: fixed; left:0; bottom: 0;  right: 0; background: rgba(0, 0, 0, 0.4); z-index: 999;}
+.mask-wrapper-s {  top: 0; }/* popup等插件要用到的黑色透明容器(子元素不能设定高度百分比,只能用rem或px来定义子元素的高度,但可以放在HTML任意层级元素里),show时的状态(top: 0;) */
+.mask-wrapper-h { top: 100%; }/* popup hidden时的状态(top: 100%;)*/
+.bg-cover { background-size: cover; background-repeat: no-repeat; background-position: center center;}/* 背景图自适应(拉伸-图像完全覆盖背景区域) */
+.bg-cover-all { background-size: 100% 100%; background-repeat: no-repeat; background-position: center center; }/* 背景图自适应(平铺) */
+
+// 去滚动条
+.scrollbar-none{ scrollbar-width: none; -ms-scroll-chaining: chained; -ms-overflow-style: none; -ms-content-zooming: zoom; -ms-scroll-rails: none; -ms-overflow-style: none; overflow: auto;}// 用了el-scrollbar的,火狐浏览上就将原生的scrollbar去掉 // ie 去掉滚动条
+.scrollbar-none::-webkit-scrollbar { display: none; }// 谷歌浏览上就将原生的scrollbar去掉
