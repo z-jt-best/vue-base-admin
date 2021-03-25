@@ -1,9 +1,15 @@
+<!--
+    * Time    : 2021-03-15 20:11:41
+    * Author  : zhangTj
+    * Desc    : 调查问卷列表页
+-->
+
 <template>
     <div class="app-container">
         <!-- 查询 -->
         <div class="search">
             <el-form :inline="true" :model="searchFilters" size="small">
-                <el-form-item label="标题：">
+                <el-form-item label="问卷标题：">
                     <el-input v-model="searchFilters.name" placeholder="标题：" />
                 </el-form-item>
                 <el-form-item label="创建时间">
@@ -23,12 +29,6 @@
                         <el-option label="下线" :value="0" />
                     </el-select>
                 </el-form-item>
-                <el-form-item label="是否推荐">
-                    <el-select v-model="searchFilters.recommendFlag" placeholder="请选择" clearable>
-                        <el-option label="是" :value="1" />
-                        <el-option label="否" :value="0" />
-                    </el-select>
-                </el-form-item>
                 <el-form-item>
                     <el-button size="small" @click.stop="dbnSearch">搜索</el-button>
                     <el-button size="small" @click.stop="dbnResetSearch">重置</el-button>
@@ -38,7 +38,7 @@
 
         <!-- 操作 -->
         <el-row class="my-20">
-            <el-button type="primary" @click="handleCreate">新增</el-button>
+            <el-button type="primary" @click="$toPage('questionOperate')">新增</el-button>
         </el-row>
 
         <!-- 表格 -->
@@ -66,7 +66,7 @@
                 </el-table-column>
                 <el-table-column class-name="status-col" label="Status" width="110" align="center">
                     <template slot-scope="scope">
-                        <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
+                        <el-tag type="primary">{{ scope.row.status }}</el-tag>
                     </template>
                 </el-table-column>
                 <el-table-column align="center" prop="created_at" label="Display_time" width="200">
@@ -106,75 +106,29 @@
                 @current-change="currentPageChange"
             />
         </el-row>
-
-        <!-- 混入 => 新增/编辑 -->
-        <el-dialog :title="dialogForm.title" custom-class="dialog-form" width="800px" :visible.sync="dialogForm.isVisible">
-            <el-form ref="myForm" :model="dialogForm.formData" :rules="dialogForm.formRule" label-width="95px" label-position="right" size="small">
-                <el-form-item label="标题" prop="title">
-                    <el-input
-                        v-model="dialogForm.formData.title"
-                        placeholder="请输入标题"
-                        :autosize="{ minRows: 3 }"
-                        maxlength="200"
-                        type="textarea"
-                        show-word-limit
-                        clearable
-                    />
-                </el-form-item>
-                <el-form-item label="作者" prop="author">
-                    <el-input v-model="dialogForm.formData.author" clearable placeholder="请输入作者" maxlength="20" show-word-limit />
-                </el-form-item>
-                <el-form-item label="发布时间" prop="displayTime">
-                    <el-date-picker v-model="dialogForm.formData.displayTime" type="date" placeholder="选择日期"></el-date-picker>
-                </el-form-item>
-                <el-form-item label="文章状态" v-if="dialogForm.formData.status">
-                    <el-tag :type="dialogForm.formData.status | statusFilter">{{ dialogForm.formData.status }}</el-tag>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click.stop="dialogForm.isVisible = false">取 消</el-button>
-                <el-button type="primary" @click.stop="debounceSubmit('myForm')">确 定</el-button>
-            </div>
-        </el-dialog>
     </div>
 </template>
 
 <script>
-import { tableApi } from '@/api/table'
 import common from '@/mixins/pages/commom'
-import cud from '@/mixins/pages/cud.js'
-import { parseTime } from '@/utils'
+import { tableApi } from '@/api/table'
 
 export default {
+    name: 'questionManage',
     components: {},
-    mixins: [common, cud],
-    filters: {
-        statusFilter(status) {
-            const statusMap = {
-                published: 'success',
-                draft: 'gray',
-                deleted: 'danger'
-            }
-            return statusMap[status]
-        }
-    },
+    mixins: [common],
     data() {
         return {
             searchFilters: { name: '', status: '', recommendFlag: '', beginTime: '', endTime: '' },
             date: '',
-            url: tableApi, // 混入相关增删改查
-            // 混入表单数据和校验
-            dialogForm: {
-                formData: {},
-                formRule: {
-                    title: [{ required: true, message: '请输入标题', trigger: 'blur' }],
-                    author: [{ required: true, message: '请输入作者', trigger: 'blur' }],
-                    displayTime: [{ required: true, message: '请选择时间', trigger: 'blur' }]
-                }
-            }
+            url: tableApi // 混入相关增删改查
         }
     },
+    computed: {},
+    watch: {},
     created() {},
+    destroyed() {},
+    mounted() {},
     methods: {
         // 改变日期
         changeDate() {
@@ -189,3 +143,5 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped></style>

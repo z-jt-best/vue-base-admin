@@ -17,7 +17,7 @@ $dark: #343a40;/* 暗黑*/
 $muted: #6c757d;/* 灰黑*/
 $white: #fff;/* 白色*/
 $lightmuted:#B2B2B2;/* 浅灰色*/
-$bordercolor:$mainBg;/* 默认是取 #dee2e6,现在取背景颜色的值 */
+$bordercolor:#DCDFE6;/* 默认是取 #dee2e6,现在取背景颜色的值 */
 $backgroundcolor:$mainBg;
     
  /* 防止图片闪一下 */
@@ -94,7 +94,7 @@ $backgroundcolor:$mainBg;
 .right-0{ right: 0; }
 .right-100{ right: 100%; }
 /* 宽高 */
-.w-100{ width: 100%;}
+.w-100{ width: 100% ; }
 .w-50{ width: 50%;}
 .w-25{ width: 25%;}
 .h-100{ height: 100%;}
@@ -364,6 +364,8 @@ $backgroundcolor:$mainBg;
 .border-light{ border-color: $light!important }
 .border-dark{ border-color: $dark!important }
 .border-white{ border-color: $white!important }
+.border-000{ border-color: #000 }
+.border-e4{ border-color: #e4e4e4 }
 /* 新增 */
 .border-main{  border-color: $mainColor!important}
 .border-f1{border-color: #F1F1F1!important;}
@@ -437,6 +439,8 @@ $backgroundcolor:$mainBg;
 .bg-f9{ background-color: #f9f9f9!important; }
 .bg-f5{ background-color: #f5f5f5!important; }
 .bg-fff{ background-color: #FFFFFF!important; }
+.bg-000{ background-color: #000!important; }
+.bg-f8{ background-color: #f8f8f8!important; }
 .bg-fa{ background-color: #fafafa!important; }
 .bg-main{ background-color: $mainColor!important; }
 .bg-transparent{background: transparent!important;}
