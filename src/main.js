@@ -26,6 +26,10 @@ Vue.prototype.$toPage = function (name, query) {
     }
 }
 
+// 复制文本
+import clipboard from '@/utils/clipboard'
+Vue.prototype.$clipboard = clipboard
+
 import Pagination from '@/components/Pagination'
 Vue.component('Pagination', Pagination)
 

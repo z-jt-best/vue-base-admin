@@ -90,6 +90,9 @@
                             >
                                 删除
                             </el-link>
+                            <el-link v-if="!scope.deleteFlag" :underline="false" type="primary" @click.stop="$clipboard('test', $event)">
+                                复制
+                            </el-link>
                         </span>
                     </template>
                 </el-table-column>
@@ -139,7 +142,9 @@ export default {
                 this.$set(this.searchFilters, 'beginTime', '')
                 this.$set(this.searchFilters, 'endTime', '')
             }
-        }
+        },
+
+        test(e) {}
     }
 }
 </script>

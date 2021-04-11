@@ -1,3 +1,6 @@
+/**
+ * 复制文本
+ */
 import Vue from 'vue'
 import Clipboard from 'clipboard'
 

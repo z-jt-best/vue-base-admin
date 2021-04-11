@@ -1,5 +1,6 @@
 <template>
     <section class="app-main">
+        <!-- TODO => 这里需要做缓存 -->
         <transition name="fade-transform" mode="out-in">
             <router-view :key="key" />
         </transition>

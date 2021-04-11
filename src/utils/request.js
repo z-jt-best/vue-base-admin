@@ -184,7 +184,8 @@ class BaseRequest {
                 const link = document.createElement('a') // a标签下载
                 link.href = window.URL.createObjectURL(fileContent)
                 const fileName = getFileName(res.headers['content-disposition'])
-                link.download = `${fileName}`
+                // 判断请求头中是否存在content-disposition，有则使用后端返回的名字，没有则使用默认名字
+                link.download = fileName.includes('xlsx') ? `${fileName}` : 'data.xlsx'
                 link.click()
                 window.URL.revokeObjectURL(link.href)
                 Message({
